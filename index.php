@@ -33,7 +33,13 @@ $(document).ready(function () {
   });
 
   $('#selGender').change(function() {
-    table.columns("#col_gender").search(this.value).draw();
+    if(this.value == "All"){
+      table.columns("#col_gender").search('', true, false ).draw();
+
+    }else{
+      table.columns("#col_gender").search(this.value).draw();
+
+    }
 
   });
   $("#showDeletedData").change(function() {
@@ -80,6 +86,7 @@ $(document).ready(function () {
                 <div class="col-lg-6">
                        <label for="sel1">Select list:</label>
                        <select class="form-control" id="selGender">
+                         <option id="all">All</option>
                          <option id="male">M</option>
                          <option id="female">F</option>
                        </select>
